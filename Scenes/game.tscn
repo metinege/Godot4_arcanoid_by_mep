@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dso7wyqhk4yeh"]
+
+[ext_resource type="PackedScene" uid="uid://c22hpsx2v4hoh" path="res://Scenes/level_one.tscn" id="1_a5flh"]
+[ext_resource type="PackedScene" uid="uid://b1eqd5b0jwm30" path="res://Scenes/game_over.tscn" id="1_o1le5"]
+[ext_resource type="PackedScene" uid="uid://baoc60d8sipuj" path="res://Scenes/menu.tscn" id="1_seo35"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Menu" parent="." instance=ExtResource("1_seo35")]
+visible = false
+offset_left = -70.0
+offset_top = 0.0
+offset_right = -70.0
+offset_bottom = 0.0
+
+[node name="GameOver" parent="." instance=ExtResource("1_o1le5")]
+visible = false
+
+[node name="LevelOne" parent="." instance=ExtResource("1_a5flh")]

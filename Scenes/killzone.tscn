@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://cik34g1w6rm62"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_o8kod"]
+
+[node name="Killzone" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.08165e-12, 10)
+shape = SubResource("WorldBoundaryShape2D_o8kod")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

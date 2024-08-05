@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://6vxmgkwkv4vp"]
+
+[ext_resource type="Texture2D" uid="uid://oqp4hnexe2kv" path="res://art/Arkanoid Assets/space.jpg" id="1_1dkgn"]
+
+[node name="background" type="Sprite2D"]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_1dkgn")
+centered = false

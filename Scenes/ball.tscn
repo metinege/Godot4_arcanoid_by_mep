@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://c37esc51ajbse"]
+
+[ext_resource type="Script" path="res://Scripts/ball.gd" id="1_jknol"]
+[ext_resource type="Texture2D" uid="uid://dim0qxu8n6dy7" path="res://art/Arkanoid Assets/ball.png" id="1_rtpgu"]
+[ext_resource type="AudioStream" uid="uid://omivp67f8agw" path="res://art/sounds/sfx/block_break_sound.mp3" id="3_ogkpx"]
+[ext_resource type="AudioStream" uid="uid://cko1tr4hm1mwo" path="res://art/sounds/sfx/paddle_bounce_sfx.mp3" id="4_0aodn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1reky"]
+radius = 20.025
+
+[node name="Ball" type="RigidBody2D"]
+gravity_scale = 1.66533e-16
+script = ExtResource("1_jknol")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("1_rtpgu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.7, 0.7)
+shape = SubResource("CircleShape2D_1reky")
+
+[node name="block_break_sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ogkpx")
+
+[node name="paddle_bounce_sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_0aodn")
+volume_db = 0.8
+pitch_scale = 0.7

@@ -1,0 +1,89 @@
+[gd_scene load_steps=9 format=3 uid="uid://c22hpsx2v4hoh"]
+
+[ext_resource type="Script" path="res://Scripts/level_one.gd" id="1_46uof"]
+[ext_resource type="PackedScene" uid="uid://6yqylqf23lng" path="res://Scenes/paddle.tscn" id="2_u3c55"]
+[ext_resource type="PackedScene" uid="uid://by7k1jvs85hqs" path="res://Scenes/standart_block.tscn" id="2_ybnk5"]
+[ext_resource type="PackedScene" uid="uid://c37esc51ajbse" path="res://Scenes/ball.tscn" id="3_n6ndg"]
+[ext_resource type="PackedScene" uid="uid://6vxmgkwkv4vp" path="res://Scenes/background.tscn" id="4_wrd23"]
+[ext_resource type="PackedScene" uid="uid://cik34g1w6rm62" path="res://Scenes/killzone.tscn" id="6_mhlb0"]
+[ext_resource type="AudioStream" uid="uid://c37c4ftblvaud" path="res://art/sounds/music/Whispers of the Woods.mp3" id="7_4b0w3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1m837"]
+size = Vector2(297, 71)
+
+[node name="LevelOne" type="Node2D"]
+position = Vector2(576, 324)
+script = ExtResource("1_46uof")
+
+[node name="background" parent="." instance=ExtResource("4_wrd23")]
+centered = true
+
+[node name="boundaries" type="Node2D" parent="."]
+
+[node name="left" type="StaticBody2D" parent="boundaries"]
+position = Vector2(-576, 0)
+rotation = 1.5708
+scale = Vector2(2.2, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boundaries/left"]
+shape = SubResource("RectangleShape2D_1m837")
+
+[node name="right" type="StaticBody2D" parent="boundaries"]
+position = Vector2(576, 1.36391e-13)
+rotation = 1.5708
+scale = Vector2(2.2, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boundaries/right"]
+shape = SubResource("RectangleShape2D_1m837")
+
+[node name="top" type="StaticBody2D" parent="boundaries"]
+position = Vector2(0, -324)
+scale = Vector2(4, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boundaries/top"]
+shape = SubResource("RectangleShape2D_1m837")
+
+[node name="block_group" type="Node2D" parent="."]
+
+[node name="block1" parent="block_group" instance=ExtResource("2_ybnk5")]
+modulate = Color(1, 0.330219, 0.193635, 1)
+position = Vector2(0, -177)
+
+[node name="block2" parent="block_group" instance=ExtResource("2_ybnk5")]
+modulate = Color(0.0784314, 0.376471, 1, 1)
+position = Vector2(106, -177)
+
+[node name="block3" parent="block_group" instance=ExtResource("2_ybnk5")]
+modulate = Color(1, 0.113725, 0.788235, 1)
+position = Vector2(-106, -177)
+
+[node name="block4" parent="block_group" instance=ExtResource("2_ybnk5")]
+modulate = Color(1, 0.643137, 0, 1)
+position = Vector2(0, -130)
+
+[node name="block5" parent="block_group" instance=ExtResource("2_ybnk5")]
+modulate = Color(0, 0.576471, 0, 1)
+position = Vector2(-106, -130)
+
+[node name="block6" parent="block_group" instance=ExtResource("2_ybnk5")]
+modulate = Color(0.886275, 0, 0, 1)
+position = Vector2(106, -130)
+
+[node name="Paddle" parent="." groups=["paddle"] instance=ExtResource("2_u3c55")]
+unique_name_in_owner = true
+position = Vector2(0, 226)
+scale = Vector2(3, 3)
+
+[node name="Ball" parent="." instance=ExtResource("3_n6ndg")]
+unique_name_in_owner = true
+position = Vector2(0, 192)
+
+[node name="Killzone" parent="." instance=ExtResource("6_mhlb0")]
+position = Vector2(0, 324)
+
+[node name="GameMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_4b0w3")
+pitch_scale = 0.7
+autoplay = true
+
+[connection signal="body_entered" from="Killzone" to="." method="_on_killzone_body_entered"]

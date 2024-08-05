@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://by7k1jvs85hqs"]
+
+[ext_resource type="Texture2D" uid="uid://c18o6we07vnaa" path="res://art/Arkanoid Assets/standart_block.png" id="1_r7w8m"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1oyqu"]
+radius = 11.0
+height = 52.0
+
+[node name="block1" type="StaticBody2D" groups=["blocks"]]
+scale = Vector2(2, 2)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_r7w8m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_1oyqu")
